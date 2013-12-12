@@ -53,7 +53,7 @@ angular.module('Reader').run(['$templateCache', function($templateCache) {
     "<a class=\"toc_toggle\" ng-click=\"toggleItem(item.id)\" ng-class=\"{display: item.subitems.length > 0}\">&nbsp;</a>\n" +
     "<a ng-href=\"{{item.href}}\" \n" +
     "\t class=\"toc_link{{ item.type }}\" \n" +
-    "\t ng-click=\"updateCurrent(item.id)\"\n" +
+    "\t ng-click=\"updateCurrent(item)\"\n" +
     "\t post-click >{{item.label}}</a>\n" +
     "\n" +
     "<ul>\n" +
@@ -62,7 +62,7 @@ angular.module('Reader').run(['$templateCache', function($templateCache) {
     "\t\t\t\tid=\"toc-{{item.id}}\"\n" +
     "\t\t\t\tng-class=\"{currentChapter: active == item.id}\"\n" +
     "\t\t\t\tdata-parent=\"{{item.parent}}\"></li>\n" +
-    "</ul>"
+    "</ul>\n"
   );
 
 
