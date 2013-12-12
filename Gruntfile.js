@@ -277,6 +277,13 @@ module.exports = function (grunt) {
         }]
       }
     },
+    ngtemplates:  {
+      Reader:        {
+        cwd:      'src/',
+        src:      'views/**.html',
+        dest:     'src/templates.js'
+      }
+    },
     uglify: {
       dist: {
         files: {
