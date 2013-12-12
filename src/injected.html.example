@@ -1,0 +1,9 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org/" ng-app="Reader">
+  <head>
+    <meta charset="utf-8">
+    <script src="oerpub.github.io/epubjs-reader/src/inject.js"></script>
+  </head>
+  <body>
+  </body>
+</html>
