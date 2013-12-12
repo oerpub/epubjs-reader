@@ -20,13 +20,14 @@ angular.module('Reader')
 					$el.parents('li').addClass("openChapter");
 				}
 
-				$scope.updateCurrent = function(id) {
+				$scope.updateCurrent = function(item) {
 					// var item,
 					// 		ancestors = [];
 					// 
 					// var $el = $('#toc-'+id);
 
-					$scope.active = id;
+					$scope.active = item.id;
+          $rootScope.book.goto(item.href);
 
 					// $location.path(href);
 					// $scope.$apply();
