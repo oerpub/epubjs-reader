@@ -90,7 +90,7 @@
       $('html').attr('ng-app', 'Reader');
 
       $('body').append(
-        $('<epubreader src="moby-dick/">')
+        $('<epubreader src="./">')
       );
       
       $.each(styles, function(i, link) {
@@ -100,6 +100,21 @@
       // defer angular bootstrap until all scripts are loaded
       window.name = 'NG_DEFER_BOOTSTRAP!' + window.name;
       loadScripts(0, function() {
+
+        // FIXME - this is a terrible hack to redirect any images to the reader 
+        // host, because setting base[href] to another domain angers angular
+        // (and is probably a terrible idea) and changing the image sources
+        // in the templates seemed like the wrong approach
+        angular.module('Reader')
+	        .directive('img', function() {
+		        return {
+			        restrict: "E",
+              link: function(scope, element, attrs) {
+                element.attr('src', baseUrl + attrs.src);
+              }
+            }
+          });
+
         angular.resumeBootstrap();
       });
     }
