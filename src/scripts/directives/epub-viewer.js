@@ -96,7 +96,7 @@ angular.module('Reader')
 								
 				attrs.$observe('src', function(value) {
 					//TODO: destroy previous
-					var opened = book.open(attrs.src);
+					var opened = book.open(attrs.src, true);
 					var rendered = book.renderTo(element.find('#area')[0]);
 					
 					rendered.then(function(){
