@@ -189,12 +189,35 @@ angular.module('Reader')
 			},
 
 			link: function(scope, element, attrs, gAnalytics) {
-				
-				// attrs.$observe('ua', function(value) {
-				// 	if(attrs.ua) {
-				// 		book.goto(attrs.path);
-				// 	}
-				// });
+        var book = scope.book;
+
+        attrs.$observe('src', function(value) {
+          //todo: destroy previous
+          var opened = book.open(attrs.src,true); // oerpub: true == forcereload, was otherwise opening an old book stored in a local storage varialbe
+          var rendered = book.renderto(element.find('#area')[0]);
+
+          rendered.then(function(){
+          // $scope.onrendered();
+          });
+
+        });
+
+        attrs.$observe('path', function(value) {
+          if(scope.isready && attrs.path) {
+            book.goto(attrs.path);
+          } else if(attrs.path.length > 1) {
+            book.settings.goto = attrs.path;
+          }
+        });
+
+        attrs.$observe('cfi', function(value) {
+          if(scope.isReady && attrs.cfi.length > 1) {
+            book.gotoCfi(attrs.cfi);
+          } else if(attrs.cfi.length > 1) {
+            book.settings.gotoCfi = attrs.cfi;
+          }
+
+        });		
 				
 			}
 
