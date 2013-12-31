@@ -96,7 +96,7 @@ angular.module('Reader')
 								
 				attrs.$observe('src', function(value) {
 					//TODO: destroy previous
-					var opened = book.open(attrs.src, true);
+					var opened = book.open(attrs.src, true); // oerpub: true == forceReload, was otherwise opening an old book stored in a local storage variable
 					var rendered = book.renderTo(element.find('#area')[0]);
 					
 					rendered.then(function(){
