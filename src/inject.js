@@ -1,5 +1,10 @@
 (function() {
 
+  // remove the `.html` from the url, it breaks things
+  if (window.location.pathname.indexOf('.html') > 0) {
+    window.location = window.location.href.replace('.html', '');   
+  }
+
   var scripts = document.getElementsByTagName('script')
     , url = scripts[scripts.length-1].src 
     , baseUrl = url.match(/.+\//)[0] // everything up to the last slash 
